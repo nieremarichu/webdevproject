@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import "./Admin.css";
 import Options from './Options';
-import swal from 'sweetalert'
+import swal from 'sweetalert';
+import req from "../helper/api";
 
 class Login extends Component  {
     constructor(props){
@@ -13,6 +14,25 @@ class Login extends Component  {
 
         }
     }
+
+    info = () => {
+        req
+            .login()
+            .then(resp => {
+                var tempArray = [];
+                let dataz = resp.data.data;
+                for (let i = 0 < dataz.length; ++i) {
+                    if(i > 1) {
+                        let myObj = {
+                            username: dataz[i],
+                            password: dataz[i].password                            
+                        }
+                    }
+                }
+            })
+
+    }
+
     onclickHandler(e){
         if(this.state.username === "" && this.state.password === ""){
             swal({
