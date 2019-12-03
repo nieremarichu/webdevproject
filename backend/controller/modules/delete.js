@@ -1,12 +1,29 @@
 const route_model = require('../../model/route')
 
 let delete_route = (req, res) => {
-    route_model.findOneAndUpdate(
-        {}, //condition
+    route_model.findOneAndDelete(
+        {route: req.body}, //condition
         (err, data) => {
-
+            if(err) {
+                return res.send(err)
+            }else{
+                return res.send(data)
+            }
         }
     )
 }
 
-module.exports = { delete_route }
+let delete_places = (req,res) => {
+    route_model.findOneAndDelete(
+        {places: req.body},
+        (err,data) => {
+            if(err) {
+                return res.send(err)
+            }else{
+                return res.send(data)
+            }
+        }
+    )
+
+}
+module.exports = { delete_route, delete_places }
