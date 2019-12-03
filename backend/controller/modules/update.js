@@ -3,9 +3,10 @@ const route_model = require('../../model/route')
 let update_route = (req, res) => {
     console.log(req.body)
     route_model.findOneAndUpdate(
-        {route: req.body}, //condition
-        {places: req.body}, //new data
+        {_id: req.params.id}, //condition
+        req.body, //new data
         //{upsert:true} || {new:true},
+        {new:true},
         (err, data) => {
             if(err) {
                 return res.send(err)
@@ -18,9 +19,9 @@ let update_route = (req, res) => {
 
 let update_places = (req,res) => {
     console.log(req.body)
-    route_model.findOneAndDelete(
-        {places: req.body},
-        {route: req.body},
+    route_model.findOneAndUpdate(
+        {_id: req.params.id},
+         req.body,
         (err,data) => {
             if(err) {
                 return res.send(err)

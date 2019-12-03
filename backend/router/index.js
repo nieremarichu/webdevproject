@@ -12,16 +12,16 @@ routes.route("/createroute").post((req, res) => {
     create.create_route(req,res);
 })
 
-routes.route("/createplaces").post((req,res) => {
-    create.create_places(req,res);
-})
+// routes.route("/createplaces").post((req,res) => {
+//     create.create_places(req,res);
+// })
 
 //deleting routes
-routes.route("/deleteroute").delete((req,res) => {
+routes.route("/deleteroute/:id").delete((req,res) => {
     dlt.delete_route(req,res);
 })
 
-routes.route("/deleteplaces").delete((req,res) => {
+routes.route("/deleteplaces/:id").delete((req,res) => {
     dlt.delete_places(req,res);
 })
 
@@ -31,11 +31,11 @@ routes.route("/retrieveAll").get((req,res) => {
 })
 
 //updating routes
-routes.route("/updateroute").post((req,res) => {
+routes.route("/updateroute/:id").post((req,res) => {
     update.update_route(req,res);
 })
 
-routes.route("/updateplaces").post((req,res) => {
+routes.route("/updateplaces/:id").post((req,res) => {
     update.update_places(req,res);
 })
 

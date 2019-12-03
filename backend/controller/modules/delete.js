@@ -2,7 +2,7 @@ const route_model = require('../../model/route')
 
 let delete_route = (req, res) => {
     route_model.findOneAndDelete(
-        {route: req.body}, //condition
+        {_id: req.params.id}, //condition
         (err, data) => {
             if(err) {
                 return res.send(err)
@@ -15,7 +15,7 @@ let delete_route = (req, res) => {
 
 let delete_places = (req,res) => {
     route_model.findOneAndDelete(
-        {places: req.body},
+        {_id: req.params.id},
         (err,data) => {
             if(err) {
                 return res.send(err)
