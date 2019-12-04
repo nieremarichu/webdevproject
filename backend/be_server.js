@@ -23,7 +23,7 @@ mongoose.connect(dbConfig, { useNewUrlParser: true, useUnifiedTopology: true, us
 //db_config
 // require('./system/db_config')
 
-app.use(cors())
+app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true, limit: "20mb" }));
 app.use(bodyParser.json({ limit: "20mb" }));
 
@@ -69,6 +69,6 @@ app.all('/', function (req, res) {
 
 app.use("/jeepme", router)
 
-app.listen(PORT, () => {
-    console.log("Server is running in PORT..," + PORT)
+app.listen(300, () => {
+    console.log("Server is running in PORT..," + 3001)
 })

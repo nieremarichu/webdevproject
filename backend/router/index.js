@@ -7,7 +7,8 @@ const dlt = require('../controller/modules/delete')
 const retrieve = require('../controller/modules/retrieve')
 const update = require('../controller/modules/update')
 const adm = require('../controller/modules/admin')
-const adsert = require('../controller/modules/adminisrt')
+const  admin_account = require('../controller/create_default_account')
+const admin_info = require('../controller/modules/admin_data')
 
 //creating routes
 routes.route("/createroute").post((req, res) => {
@@ -20,8 +21,6 @@ routes.route("/createroute").post((req, res) => {
 
 
 //creating admin default account
-const  admin_account = require('../controller/create_default_account')
-const admin_info = require('../controller/modules/admin_data')
 
 routes.route("/install").all((req,res) => {    
     admin_account.create_default_account(req,res);
@@ -59,9 +58,6 @@ routes.route("/admin").get((req,res) => {
     adm.retrieve_admin(req,res);
 })
 
-routes.route("/admininsert").post((req,res) => {
-    adsert
-})
 
 // routes.post('/admin', (req, res) => {
 //     // console.log(req.body)
