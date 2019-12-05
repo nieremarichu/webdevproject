@@ -11,7 +11,9 @@ const admin_info = require('../controller/modules/admin_data')
 
 //creating routes
 routes.route("/createroute").post((req, res) => {
-    create.create_route(req,res);
+    console.log('asa na ka');
+    console.log(req.body);
+    create.create_route(req.body,res);
 })
 
 // routes.route("/createplaces").post((req,res) => {
@@ -38,8 +40,8 @@ routes.route("/deleteroute/:id").delete((req,res) => {
     dlt.delete_route(req,res);
 })
 
-routes.route("/deleteplaces/:id").delete((req,res) => {
-    dlt.delete_places(req,res);
+routes.route("/deleteplaces/:place").delete((req,res) => {
+    dlt.delete_places(req.params.place,res);
 })
 
 //retrieving routes
