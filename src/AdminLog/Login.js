@@ -18,28 +18,11 @@ class Login extends Component {
         }
     }
 
-    // handleClick(event) {
-    //     var apiBaseUrl = "/admindata";
-    //     // var self = this;
-    //     var payload = {
-    //         "username": this.state.username,
-    //         "password": this.state.password
-    //     }
-
-    //     try {
-    //         const response = axios.post('http://demo0725191.mockable.io/post_data', { posted_data: 'example' });
-    //         console.log('👉 Returned data:', response);
-    //     } catch (e) {
-    //         console.log(`😱 Axios request failed: ${e}`);
-    //     }
-
-        
-    // }
-
+    
     loginAuth() {
         return new Promise((resolve, reject) => {
             console.log("ing sulod");
-            axios.get('http://localhost:3000/jeepme/admindata/')
+            axios.get('http://localhost:3000/jeepme/admindata/'+ this.state.username + "/"+this.state.password)
                 .then(res => {
                     console.log("inglahos");
                     console.log(res.data)
@@ -54,10 +37,9 @@ class Login extends Component {
     onclickHandler(e) {
         if (this.state.username !== "" && this.state.password !== "") {
             console.log("edgsd");
-            // let errors = this.state.errors;
             this.loginAuth().then(res => {
                 console.log("gesdgd");
-                if (res.data.body.auth) {
+                if (res.data.data.body.auth) {
                     console.log(res);
                     this.setState({ situation: true });
                     localStorage.setItem("token", res.data.data.body.accessToken)

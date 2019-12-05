@@ -7,6 +7,7 @@ let successResponse = require("../helper/setSuccessResponse");
 const Admin_Model = require('../../model/adminschema')
 
 let retrieve_admin = (req,reqPassword, res) => {
+    console.log(req)
     console.log("naa na dri");
     Admin_Model.findOne({"username": req}, (err, returns) => {
         console.log("hapit na");
@@ -25,7 +26,7 @@ let retrieve_admin = (req,reqPassword, res) => {
                     if (match) {
                         console.log("nawala");
                         response = successResponse(200, {
-                            accessToken: jwt.sign({ username: returns.username, password: returns.password }, "Linkod", { expiresIn: '12h' }),
+                            accessToken: jwt.sign({ username: returns.username, password: returns.password }, "Jeepme", { expiresIn: '12h' }),
                             auth: true
                             
                         }, "Login Successful!")
@@ -40,7 +41,7 @@ let retrieve_admin = (req,reqPassword, res) => {
                     // res.status(response.status).send(response);
                 })
         }else {
-            console.log("nor found diay");
+            console.log("not found diay");
             response = errorResponse(404, err, "Account is not Found!")
             res.send(response);
         }
