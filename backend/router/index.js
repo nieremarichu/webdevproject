@@ -26,10 +26,15 @@ routes.route("/install").all((req,res) => {
     admin_account.create_default_account(req,res);
 })
 
-routes.route("/admindata").get((req,res) => {
-    admin_info.retrieve_admin(req,res);
+// routes.route("/admindata").get((req,res) => {
+//     // console.log(req.body);
+//     admin_info.retrieve_admin(req,res);
+//     console.log("req.body")
+// })
+routes.route('/admindata/:username/:password').get((req, res) => {
+    admin_info.retrieve_admin(req.params.username, req.params.password, res);
+    console.log("req.body");
 })
-
 //deleting routes
 routes.route("/deleteroute/:id").delete((req,res) => {
     dlt.delete_route(req,res);
